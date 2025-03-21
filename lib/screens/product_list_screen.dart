@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:product_app/models/product.dart';
+import 'package:product_app/screens/product_detail_screen.dart';
 import 'package:product_app/services/api_service.dart';
 
 class ProductListScreen extends StatefulWidget {
@@ -47,6 +48,16 @@ class _ProductListScreenState extends State<ProductListScreen> {
                       ),
                       title: Text(product.title),
                       subtitle: Text(product.price.toString()),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) =>
+                                    ProductDetailScreen(productId: product.id),
+                          ),
+                        );
+                      },
                     );
                   },
                 );

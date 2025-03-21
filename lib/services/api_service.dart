@@ -20,7 +20,7 @@ class ApiService {
 
   static Future<Product> fetchProductDetail(int id) async {
     final response = await http.get(
-      Uri.parse(": https://dummyjson.com/products/{id}"),
+      Uri.parse("https://dummyjson.com/products/$id"),
     );
     if (response.statusCode == 200) {
       return Product.fromJson(jsonDecode(response.body));
@@ -32,7 +32,7 @@ class ApiService {
 
 Future<List<Product>> searchProducts(String query) async {
   final response = await http.get(
-    Uri.parse("https://dummyjson.com/products/search?q=your_query."),
+    Uri.parse("https://dummyjson.com/products/search?q=$query"),
   );
   if (response.statusCode == 200) {
     final data = jsonDecode(response.body);
