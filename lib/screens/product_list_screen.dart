@@ -3,6 +3,8 @@ import 'package:product_app/models/product.dart';
 import 'package:product_app/screens/product_detail_screen.dart';
 import 'package:product_app/services/api_service.dart';
 
+import '../services/api_service.dart' as api_service;
+
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
 
@@ -12,11 +14,18 @@ class ProductListScreen extends StatefulWidget {
 
 class _ProductListScreenState extends State<ProductListScreen> {
   late Future<List<Product>> products;
+  TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     products = ApiService.fetchProducts();
+  }
+
+  void searchProducts(String query) {
+    setState(() {
+      products = api_service.searchProducts(query);
+    });
   }
 
   @override
@@ -28,6 +37,18 @@ class _ProductListScreenState extends State<ProductListScreen> {
       ),
       body: Column(
         children: [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 216),
+            child: TextField(
+              controller: searchController,
+              decoration: InputDecoration(
+                hintText: "Search",
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (query) => searchProducts(query),
+            ),
+          ),
           Expanded(
             child: FutureBuilder(
               future: products,
