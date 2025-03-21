@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:product_app/screens/product_list_screen.dart';
 
 void main() {
-  runApp(MaterialApp());
+  runApp(
+    MaterialApp(debugShowCheckedModeBanner: false, home: ProductListScreen()),
+  );
 }

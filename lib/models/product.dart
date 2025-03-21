@@ -16,7 +16,7 @@ class Product {
       id: product['id'],
       title: product['title'],
       image: product['thumbnail'],
-      price: product['price'],
+      price: product['price'].toDouble(),
     );
   }
 }

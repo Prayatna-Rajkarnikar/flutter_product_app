@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:product_app/models/product.dart';
 
 class ApiService {
-  Future<List<Product>> fetchProducts() async {
+  static Future<List<Product>> fetchProducts() async {
     final response = await http.get(
       Uri.parse("https://dummyjson.com/products"),
     );
@@ -18,7 +18,7 @@ class ApiService {
     }
   }
 
-  Future<Product> fetchProductDetail(int id) async {
+  static Future<Product> fetchProductDetail(int id) async {
     final response = await http.get(
       Uri.parse(": https://dummyjson.com/products/{id}"),
     );
