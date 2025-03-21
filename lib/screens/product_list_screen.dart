@@ -28,12 +28,18 @@ class _ProductListScreenState extends State<ProductListScreen> {
     });
   }
 
+  void sortProducts() {
+    setState(() {
+      products = api_service.sortProducts();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Products"),
-        // actions: [IconButton(onPressed:, icon: Icon(Icons.sort_by_alpha),)],
+        actions: [IconButton(onPressed: sortProducts, icon: Icon(Icons.sort))],
       ),
       body: Column(
         children: [
