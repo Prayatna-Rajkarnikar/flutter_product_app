@@ -38,17 +38,13 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Explore",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
-        ),
+        title: Text("Explore"),
         actions: [
           IconButton(
             onPressed: sortProducts,
             icon: Icon(Icons.sort_by_alpha_rounded),
           ),
         ],
-        actionsPadding: EdgeInsets.symmetric(horizontal: 16),
       ),
       body: Column(
         children: [
@@ -59,16 +55,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
               decoration: InputDecoration(
                 hintText: "Search",
                 prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide.none,
-                ),
-                filled: true,
-                fillColor: Colors.purple[50],
-                contentPadding: EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 20,
-                ),
               ),
 
               onChanged: (query) => searchProducts(query),
@@ -106,17 +92,11 @@ class _ProductListScreenState extends State<ProductListScreen> {
                           );
                         },
                         child: Card(
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Row(
                               children: [
                                 ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-
                                   child: Image.network(
                                     product.image,
                                     width: 100,
@@ -132,21 +112,20 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                     children: [
                                       Text(
                                         product.title,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 16,
-                                        ),
+                                        style:
+                                            Theme.of(
+                                              context,
+                                            ).textTheme.headlineMedium,
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                       SizedBox(height: 8),
                                       Text(
                                         "Rs ${product.price.toString()}",
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.deepPurple,
-                                        ),
+                                        style:
+                                            Theme.of(
+                                              context,
+                                            ).textTheme.labelSmall,
                                       ),
                                     ],
                                   ),
